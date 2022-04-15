@@ -1,8 +1,16 @@
-<div>
+<ul>
+    <div *ngFor='let goal of goals;let i = index'>
+      <li>{{goal.name}}</li>
+      <button (click)='toggleDetails(i)'>Toggle Details</button>
+      <app-goaldetail *ngIf='goal.showDescription' [goal]='goal' (isComplete) = 'completeGoal($event,i)'></app-goaldetail>
+    </div>
+  </ul>
+  <p *ngIf='goals.length > 5'>Your goals are too many</p>
+  <!--<div>
     <ul>
     <li *ngFor='let goal of goals'>{{goal.name}} 
         <app-goaldetail [goal]='goal'></app-goaldetail>
     </li>
   </ul>
-  <p *ngIf='goals.length > 5'>Your goals are too many</p>
-</div>
+  
+</div>-->
